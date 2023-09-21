@@ -11,6 +11,8 @@
 
 <h1>Hello world!!</h1>
 
+<h1>안녕안녕~</h1>
+
 <h1><a href="board/list">스프링 웹 프로젝트 바로가기</a></h1>
 
 
