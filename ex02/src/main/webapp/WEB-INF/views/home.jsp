@@ -10,6 +10,7 @@
 
 
 <h1>Hello world!!</h1>
+<p>${server.time}</p>
 
 <h1>안녕안녕~</h1>
 
