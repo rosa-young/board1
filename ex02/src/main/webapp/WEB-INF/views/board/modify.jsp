@@ -90,7 +90,15 @@
 				}
 			}
 			else if(operation==="remove") //삭제 버튼이 눌리면
+				//alert 창을 띄워서 비밀번호 입력받기
+				//비번이 일치할 경우 삭제
+								
 				formObj.attr("action","/board/remove");
+				//비번이 일치하지 않으면 
+				//alert 창을 띄워서 경고 후 다시 비번창으로 
+				alert("비밀번호가 일치하지 않습니다. 다시입력하세요.");
+			
+			
 			else if(operation==="list"){ //리스트 버튼이 눌리면
 				self.location="/board/list";  //board/list 요청
 				return; //리턴없으면 아래문장이 실행됨으로
