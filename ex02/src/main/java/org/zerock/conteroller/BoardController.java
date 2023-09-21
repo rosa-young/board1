@@ -43,9 +43,14 @@ public class BoardController {
 		                               //redirect가 있으면 요청.		
 	}
 	
-	@GetMapping({"/register","/remove"})
+	@GetMapping("/register")
 		public void register() {
 		
+	}
+	
+	@GetMapping("/remove")//비번 화면 요청
+	public void remove(Long bno, Model model) {
+		model.addAttribute("bno",bno);
 	}
 	
 	@GetMapping("/modify")
@@ -67,12 +72,20 @@ public class BoardController {
 	
 	//삭제(글번호-bon) board/remove (post)  <-입력화면(get)
 	@PostMapping("/remove")
-	public String remove(Long bno,RedirectAttributes rttr, Criteria cri) {
+	public String remove(Long bno,RedirectAttributes rttr, Criteria cri,String pw) {
 		log.info("삭제 url요청");
-		if(service.remove(bno)) {//이상없으면 result 이름으로 success전송.
-			rttr.addFlashAttribute("oper","remove");
-			rttr.addFlashAttribute("result", bno);			
-		}return "redirect:/board/list?pageNum="+cri.getPageNum()+"&amount="+cri.getAmount();
+		log.info("입력된 패스워드:"+pw);
+		if(pw.equals("1234")) {		
+			if(service.remove(bno)) {//이상없으면 result 이름으로 success전송.
+				rttr.addFlashAttribute("oper","remove");
+				rttr.addFlashAttribute("result", bno);			
+		}
+		return "redirect:/board/list";
+	}else {
+		rttr.addFlashAttribute("flag","fail");
+		return "redirect:/board/remove?bno="+bno;
+	} 
+	
 	}
 
 
@@ -81,10 +94,12 @@ public class BoardController {
 	@PostMapping("/modify")
 	public String modify(BoardVO vo,RedirectAttributes rttr, Criteria cri) {
 		log.info("글수정 url요청");
-		if(service.modify(vo)) {
-		rttr.addFlashAttribute("oper","modify");
-		rttr.addFlashAttribute("result",vo.getBno());
-		}return "redirect:/board/list?pageNum="+cri.getPageNum()+"&amount="+cri.getAmount();
+			
+			if(service.modify(vo)) {
+				rttr.addFlashAttribute("oper","modify");
+				rttr.addFlashAttribute("result",vo.getBno());
+		}
+		return "redirect:/board/list?pageNum="+cri.getPageNum()+"&amount="+cri.getAmount();
 	}
 	
 	//좋아요 처리
@@ -94,11 +109,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	//삭제버튼 클릭 시 재확인
-	@PostMapping("/delete")
-	public String delete() {
-		return "redirect:/board/list";
-	}
+
 	
 
 }

@@ -89,11 +89,10 @@
 					return;
 				}
 			}
-			else if(operation==="remove") //삭제 버튼이 눌리면
-				
+			else if(operation==="remove"){ //삭제 버튼이 눌리면				
 				formObj.attr("action","/board/remove");
-					
-			
+				formObj.attr("method", "get");
+			}			
 			else if(operation==="list"){ //리스트 버튼이 눌리면
 				self.location="/board/list";  //board/list 요청
 				return; //리턴없으면 아래문장이 실행됨으로
