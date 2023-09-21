@@ -90,13 +90,19 @@
 				}
 			}
 			else if(operation==="remove") //삭제 버튼이 눌리면
-				//alert 창을 띄워서 비밀번호 입력받기
+				//prompt 창을 띄워서 비밀번호 입력받기
+				var text = prompt("비밀번호를 입력해주세요.");
+    			document.write("<h3>" + text +"</h3>");
+
 				//비번이 일치할 경우 삭제
-								
-				formObj.attr("action","/board/remove");
-				//비번이 일치하지 않으면 
+				if(pw==="1234"){
+					formObj.attr("action","/board/remove");
+				}								
+				
+				else {//비번이 일치하지 않으면 
 				//alert 창을 띄워서 경고 후 다시 비번창으로 
 				alert("비밀번호가 일치하지 않습니다. 다시입력하세요.");
+				}
 			
 			
 			else if(operation==="list"){ //리스트 버튼이 눌리면
