@@ -93,5 +93,12 @@ public class BoardController {
 		service.good(bno);	
 		return "redirect:/board/list";
 	}
+	
+	//삭제버튼 클릭 시 재확인
+	@PostMapping("/delete")
+	public String delete() {
+		return "redirect:/board/list";
+	}
+	
 
 }

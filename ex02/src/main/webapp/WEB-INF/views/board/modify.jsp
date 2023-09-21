@@ -90,20 +90,9 @@
 				}
 			}
 			else if(operation==="remove") //삭제 버튼이 눌리면
-				//prompt 창을 띄워서 비밀번호 입력받기
-				var text = prompt("비밀번호를 입력해주세요.");
-    			document.write("<h3>" + text +"</h3>");
-
-				//비번이 일치할 경우 삭제
-				if(pw==="1234"){
-					formObj.attr("action","/board/remove");
-				}								
 				
-				else {//비번이 일치하지 않으면 
-				//alert 창을 띄워서 경고 후 다시 비번창으로 
-				alert("비밀번호가 일치하지 않습니다. 다시입력하세요.");
-				}
-			
+				formObj.attr("action","/board/remove");
+					
 			
 			else if(operation==="list"){ //리스트 버튼이 눌리면
 				self.location="/board/list";  //board/list 요청
@@ -117,8 +106,24 @@
 		
 	});
 	</script>
-    
+	
 
+
+<script>
+// 		//비번설정
+// 		var pass = "1234";  
+// 		//prompt 창을 띄워서 비밀번호 입력받기
+// 		var getpass = prompt("비밀번호를 입력하세요.");
+		
+// 		if(pass == getpass) {//비번이 일치할 경우 삭제
+// 			formObj.attr("action","/board/remove");
+// 		    alert("로그인 되었습니다.");
+// 		} else {//비번이 일치하지 않으면
+// 			//alert 창을 띄워서 경고 후 다시 비번창으로 
+// 		    alert("비밀번호가 틀렸습니다.");	    
+// 		}
+
+</script>
 
 </body>
 
