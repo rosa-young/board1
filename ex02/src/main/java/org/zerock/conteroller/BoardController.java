@@ -27,7 +27,7 @@ public class BoardController {
 		log.info("list url 요청..");
 		model.addAttribute("list", service.getList(cri)); //글목록
 		model.addAttribute("pageMaker", new PageDTO(cri, service.count(cri))); //페이지바 정보
-				
+		model.addAttribute("now", service.now());		
 		// ->board/list/jsp
 		
 	}
